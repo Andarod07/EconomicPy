@@ -1,0 +1,1 @@
+-add an interval and how many parameters and calculate to cut the results on how many are needed on the dataframe
