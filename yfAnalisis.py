@@ -13,4 +13,4 @@ def fetchData(symbol:str, column:Literal['Open', 'High', 'Low', 'Close', 'Volume
 	
 	#dat.to_excel('Analisis.xlsx', index=False)
 
-fetchData("NOMD", column='Dividends')
+fetchData("NOMD", column=None)
