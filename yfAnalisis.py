@@ -1,7 +1,7 @@
 import pandas as pd
 import yfinance as yf
 
-def angelito(symbol):
+def fetchData(symbol):
 	dat = yf.Ticker(symbol)
 	#print(dat.history(period='1y', interval="1wk"))
 
@@ -10,4 +10,4 @@ def angelito(symbol):
 	print(dat)
 	dat.to_excel('Analisis.xlsx', index=False)
 
-angelito("NOMD")
+fetchData("NOMD")
