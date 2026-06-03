@@ -4,6 +4,17 @@ import yfinance as yf
 from typing import Literal
 
 
+def fetchData(symbol=str,intervalo=str, cantidad=int):
+	dat = yf.Ticker(symbol)
+
+		
+	Interval_Period = calculatePeriod(intervalo, cantidad)
+
+	dat = dat.history(period=Interval_Period[1], interval=intervalo)
+	dat = dat["Close"]
+	print(dat)
+	dat.to_excel('Analisis.xlsx', index=False)
+
 def calculatePeriod(intervalo:Literal["1m", "2m", "5m", "15m", "30m", "60m", "90m", "1d", "5d", "1wk", "1mo", "3mo"], cantidad=int):
 	timeStrInterval = re.sub(r'\d+', '', intervalo)
 
@@ -24,25 +35,4 @@ def calculatePeriod(intervalo:Literal["1m", "2m", "5m", "15m", "30m", "60m", "90
 			return [intervalQuantity, returnedPrd]
 
 		
-			
-print(calculatePeriod("1mo", 6))
-		
-
-	#calculate the period to fetch data based on the interval and cantidad
-
-	
-
-
-
-def fetchData(symbol=str,intervalo=str, cantidad=int):
-	dat = yf.Ticker(symbol)
-
-		
-	Interval_Period = calculatePeriod(intervalo, cantidad)
-
-	dat = dat.history(period=Interval_Period[1], interval=intervalo)
-	dat = dat["Close"]
-	print(dat)
-	dat.to_excel('Analisis.xlsx', index=False)
-
 fetchData("NOMD", "1mo", 6)
